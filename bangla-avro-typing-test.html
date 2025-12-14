@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Bangla Avro Typing Test - 2 লাইন + ১ মিনিট</title>
+<!-- Web-friendly SolaimanLipi font -->
 <style>
-  body { font-family: 'SolaimanLipi', sans-serif; padding: 20px; }
-  #passageContainer { border: 1px solid #ccc; padding: 15px; width: 700px; height: 100px; overflow: hidden; font-size: 20px; line-height: 1.6; }
-  .line { height: 50px; }
-  #typingArea { width: 700px; height: 80px; font-size: 20px; padding: 10px; margin-top: 10px; }
-  .correct { color: green; }
-  .mistake { background-color: #fdd; }
-  #info { margin-top: 10px; font-size: 18px; }
-  button { padding: 8px 16px; font-size: 16px; margin-top: 10px; }
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('https://cdn.jsdelivr.net/gh/username/fonts/SolaimanLipi.ttf') format('truetype');
+}
+body { font-family: 'SolaimanLipi', sans-serif; padding: 20px; }
+#passageContainer { border: 1px solid #ccc; padding: 15px; width: 700px; height: 100px; overflow: hidden; font-size: 20px; line-height: 1.6; }
+.line { height: 50px; }
+#typingArea { width: 700px; height: 80px; font-size: 20px; padding: 10px; margin-top: 10px; }
+.correct { color: green; }
+.mistake { background-color: #fdd; }
+#info { margin-top: 10px; font-size: 18px; }
+button { padding: 8px 16px; font-size: 16px; margin-top: 10px; }
 </style>
 </head>
 <body>
@@ -66,8 +71,6 @@ function calculateStats() {
 function finishTest() {
   typingArea.disabled = true;
   clearInterval(timerInterval);
-
-  // Calculate total typed words for final WPM
   const typedText = typingArea.value.trim();
   const totalTypedWords = typedText.split(/\s+/).filter(w=>w).length + currentWordIndex;
   const stats = calculateStats();
@@ -115,7 +118,6 @@ typingArea.addEventListener('input', () => {
   }
   line1Div.innerHTML = html;
 
-  // Line complete
   if (typed === currentLineText) {
     currentWordIndex += 5;
     typingArea.value = "";
